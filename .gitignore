@@ -1,8 +1,0 @@
-.cache
-.DS_Store
-**/generated/*.ts
-coverage
-pkg
-node_modules
-yarn.lock
-yarn-error.log
