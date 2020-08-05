@@ -1,18 +1,18 @@
 {
   "name": "@manifoldco/swagger-to-ts",
   "description": "Generate TypeScript types from Swagger OpenAPI specs",
-  "main": "dist/cjs",
   "version": "2.0.0",
-  "engines": {
-    "node": ">= 10.0.0"
-  },
+  "license": "ISC",
   "bin": {
     "swagger-to-ts": "bin/cli.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/manifoldco/swagger-to-ts.git"
-  },
+  "files": [
+    "dist-*/",
+    "bin/",
+    "bin/"
+  ],
+  "pika": true,
+  "sideEffects": false,
   "keywords": [
     "swagger",
     "typescript",
@@ -20,45 +20,13 @@
     "openapi",
     "node"
   ],
-  "author": "drew@pow.rs",
-  "license": "ISC",
+  "homepage": "https://github.com/manifoldco/swagger-to-ts#readme",
   "bugs": {
     "url": "https://github.com/manifoldco/swagger-to-ts/issues"
   },
-  "homepage": "https://github.com/manifoldco/swagger-to-ts#readme",
-  "@pika/pack": {
-    "pipeline": [
-      [
-        "@pika/plugin-ts-standard-pkg"
-      ],
-      [
-        "@pika/plugin-build-node"
-      ],
-      [
-        "@pika/plugin-copy-assets",
-        {
-          "files": [
-            "bin/"
-          ]
-        }
-      ]
-    ]
-  },
-  "prettier": {},
-  "scripts": {
-    "build": "pika build",
-    "lint": "eslint --ignore-path .gitignore --ext .js,.ts src",
-    "pregenerate": "npm run build",
-    "generate": "npm run generate:basic && npm run generate:notypes && npm run generate:nowrapper && npm run generate:nowarning",
-    "generate:basic": "node pkg/bin/cli example/basic.yaml -o example/basic.ts",
-    "generate:notypes": "node pkg/bin/cli example/no-types.yaml -o example/no-types.ts",
-    "generate:nowarning": "node pkg/bin/cli example/basic.yaml -o example/no-warning.ts --no-warning",
-    "generate:nowrapper": "node pkg/bin/cli example/basic.yaml -o example/no-wrapper.ts --nowrapper",
-    "publish": "npm run build && pika publish",
-    "test": "npm run build && jest",
-    "test:coverage": "npm run build && jest --coverage",
-    "typecheck": "tsc --noEmit",
-    "version": "npm run build"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/manifoldco/swagger-to-ts.git"
   },
   "dependencies": {
     "chalk": "^4.0.0",
@@ -82,5 +50,11 @@
     "jest": "^25.4.0",
     "ts-jest": "^25.4.0",
     "typescript": "^3.8.3"
-  }
+  },
+  "engines": {
+    "node": ">= 10.0.0"
+  },
+  "source": "dist-src/index.js",
+  "types": "dist-types/index.d.ts",
+  "main": "dist-node/index.js"
 }
